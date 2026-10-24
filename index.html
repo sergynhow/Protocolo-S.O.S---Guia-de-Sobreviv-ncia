@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia de Sobrevivência na Floresta - Protocolo S.O.S">
+    <title>Protocolo S.O.S: Sobrevivência</title>
+    <style>
+        /* Variáveis de Cores e Tema */
+        :root {
+            --bg-dark: #121614;
+            --bg-panel: #1e2722;
+            --forest-green: #3a7d44;
+            --forest-green-light: #4da65b;
+            --alert-red: #d32f2f;
+            --alert-red-hover: #b71c1c;
+            --text-light: #e8f0eb;
+            --text-muted: #9ba6a0;
+        }
+
+        /* Reset e Fontes */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Banner S.O.S Piscante */
+        .sos-banner {
+            background-color: var(--alert-red);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            animation: pulse-red 2s infinite;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+        }
+
+        @keyframes pulse-red {
+            0% { background-color: var(--alert-red); }
+            50% { background-color: #9a0000; }
+            100% { background-color: var(--alert-red); }
+        }
+
+        /* Cabeçalho */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(18, 22, 20, 0.4) 0%, rgba(18, 22, 20, 1) 100%), 
+                        url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            border-bottom: 3px solid var(--forest-green);
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.8);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Seções Gerais */
+        section {
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--forest-green-light);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--bg-panel);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Regra dos 3 */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .rule-card {
+            background-color: var(--bg-panel);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            border-top: 4px solid var(--forest-green);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rule-card h3 {
+            font-size: 2.2rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        .rule-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Prioridades */
+        .priorities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .priority-item {
+            background-color: var(--bg-panel);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--forest-green-light);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .priority-item h3 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .priority-item ul {
+            list-style: none;
+        }
+
+        .priority-item ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        .priority-item ul li::before {
+            content: '•';
+            color: var(--forest-green-light);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+
+        /* Botão S.O.S */
+        .sos-container {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px 0;
+            border-top: 1px solid var(--bg-panel);
+        }
+
+        .btn-sos {
+            background-color: var(--alert-red);
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn-sos:hover {
+            background-color: var(--alert-red-hover);
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(211, 47, 47, 0.6);
+        }
+
+        .btn-sos:active {
+            transform: scale(0.98);
+        }
+
+        /* Modal Overlay (CSS) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Classe para ativar o modal */
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--bg-dark);
+            border: 3px solid var(--alert-red);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+
+        .btn-close {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-muted);
+            padding: 10px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close:hover {
+            border-color: var(--text-light);
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .modal-content { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Banner Superior -->
+    <div class="sos-banner">
+        S.O.S - Protocolo de Emergência Ativo
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Protocolo S.O.S</h1>
+        <p class="subtitle">Guia de Sobrevivência na Floresta. Mantenha a calma, conserve energia e siga as instruções abaixo para maximizar suas chances de resgate.</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- Seção: A Regra dos 3 -->
+        <section id="rule-of-three">
+            <h2 class="section-title">A Regra dos 3</h2>
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h3>3 Minutos</h3>
+                    <p>Sem oxigênio ou exposto a sangramento massivo.</p>
+                </div>
+                <div class="rule-card">
+                    <h3>3 Horas</h3>
+                    <p>Sem abrigo em ambientes de frio ou calor extremo.</p>
+                </div>
+                <div class="rule-card">
+                    <h3>3 Dias</h3>
+                    <p>Sem água potável para hidratação.</p>
+                </div>
+                <div class="rule-card">
+                    <h3>3 Semanas</h3>
+                    <p>Sem ingestão de comida ou nutrientes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Prioridades -->
+        <section id="priorities">
+            <h2 class="section-title">Prioridades</h2>
+            <div class="priorities-grid">
+                
+                <div class="priority-item">
+                    <h3>1. Primeiros Socorros</h3>
+                    <ul>
+                        <li>Estanque sangramentos com pressão direta.</li>
+                        <li>Imobilize fraturas antes de se mover.</li>
+                        <li>Trate o choque mantendo a vítima aquecida.</li>
+                    </ul>
+                </div>
+
+                <div class="priority-item">
+                    <h3>2. Abrigo</h3>
+                    <ul>
+                        <li>Isole-se do chão (frio ou úmido).</li>
+                        <li>Proteja-se do vento, chuva e sol direto.</li>
+                        <li>Construa com galhos, folhas e materiais naturais.</li>
+                    </ul>
+                </div>
+
+                <div class="priority-item">
+                    <h3>3. Hidratação</h3>
+                    <ul>
+                        <li>Siga insetos e pássaros para achar água.</li>
+                        <li>Ferva a água ou use pastilhas de purificação.</li>
+                        <li>Colete água da chuva em folhas largas.</li>
+                    </ul>
+                </div>
+
+                <div class="priority-item">
+                    <h3>4. Fogo</h3>
+                    <ul>
+                        <li>Fornece calor, luz e conforto psicológico.</li>
+                        <li>Permite ferver água e cozinhar alimentos.</li>
+                        <li>A fumaça sinaliza sua posição para o resgate.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Container do Botão -->
+        <div class="sos-container">
+            <!-- Botão de ação (Sem href, usa apenas evento JS) -->
+            <button id="openModalBtn" class="btn-sos">Ativar Sinalizador S.O.S (Simulação)</button>
+        </div>
+
+    </main>
+
+    <!-- Modal Customizado -->
+    <div id="sosModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">⚠️</div>
+            <p class="modal-text">
+                Funcionalidade de SOS por satélite simulada. Em uma situação real, ative seu beacon de emergência ou procure uma área elevada para sinal de celular.
+            </p>
+            <button id="closeModalBtn" class="btn-close">Fechar</button>
+        </div>
+    </div>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('sosModal');
+            const openBtn = document.getElementById('openModalBtn');
+            const closeBtn = document.getElementById('closeModalBtn');
+
+            // Função para abrir o modal
+            function openModal() {
+                modal.classList.add('active');
+                // Impede rolagem da página no fundo
+                document.body.style.overflow = 'hidden'; 
+            }
+
+            // Função para fechar o modal
+            function closeModal() {
+                modal.classList.remove('active');
+                // Restaura rolagem da página
+                document.body.style.overflow = 'auto';
+            }
+
+            // Event Listeners dos botões
+            openBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+
+            // Fecha o modal se clicar fora do conteúdo (no overlay escuro)
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Fecha o modal usando a tecla ESC
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
